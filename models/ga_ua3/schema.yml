@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  # Source
+  - name: ga_ua3
+    database: |
+      {%- if  target.name == "dev" -%} dev
+      {%- elif target.name == "qa"  -%} qa
+      {%- elif target.name == "prod"  -%} prod
+      {%- else -%} invalid_database
+      {%- endif -%}
+    schema: raw
+    tables:
+      - name: raw_source_brand
